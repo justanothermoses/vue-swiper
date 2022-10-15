@@ -29,7 +29,7 @@ export default {
     const invokeCallback = ({ x, y, duration }) => {
       switch (mode) {
         case 'details':
-          callback(x, y, duration)
+          callback({ x, y }, duration)
           break
         default:
           const up = y > this.config.threshold,
@@ -38,7 +38,7 @@ export default {
             right = x < - this.config.threshold,
             hypotenuse = Math.sqrt(Math.abs(x) ** 2 + Math.abs(y) ** 2),
             speed = hypotenuse / duration
-          callback(up, right, down, left, speed)
+          callback({ up, right, down, left }, speed)
           break
       }
     }
